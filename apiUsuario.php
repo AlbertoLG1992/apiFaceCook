@@ -27,7 +27,7 @@ class ApiUsuario{
                     "Coordenada X" => $row['coordenada_x'],
                     "Coordenada Y" => $row['coordenada_y'],
                     "Telefono" => $row['tlf'],
-                    //"Foto" => $row['foto'],
+                    "Foto" => $row['foto'],
                     "Fecha de alta" => $row['fecha_alta'],
                     "Comentarios" => $row['comentarios'],
                 );
@@ -64,7 +64,7 @@ class ApiUsuario{
                     "Coordenada X" => $row['coordenada_x'],
                     "Coordenada Y" => $row['coordenada_y'],
                     "Telefono" => $row['tlf'],
-                    //"Foto" => $row['foto'],
+                    "Foto" => $row['foto'],
                     "Fecha de alta" => $row['fecha_alta'],
                     "Comentarios" => $row['comentarios'],
                 );

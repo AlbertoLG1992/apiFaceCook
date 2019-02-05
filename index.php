@@ -4,11 +4,11 @@
     $api = new ApiUsuario();
 
 
-    if (isset($_GET['login']) && isset($_GET['pass'])) {
-    	$api -> loguearUsuario($_GET['login'], $_GET['pass']);
+    if (isset($_POST['login']) && isset($_POST['pass'])) {
+    	$api -> loguearUsuario($_POST['login'], $_POST['pass']);
 
-    }elseif (isset($_GET['id'])) {
-    	$api -> getById($_GET['id']);
+    }elseif (isset($_POST['id'])) {
+    	$api -> getById($_POST['id']);
 
     }else{
     	$api->getAll();
