@@ -23,6 +23,29 @@
 			
 			return $query;
 		}
+
+		function insertarUsuario($nick, $pass, $nombre, $apellidos, $fecha_nacimiento, $correo, $tlf, $comentarios, $rutaImagen){
+			$query = $this->connect()->prepare('
+				INSERT INTO usuarios(login, pass, nombre, apellidos, fecha_nacimiento, email, tlf, foto, fecha_alta, comentarios)
+				VALUES (:login, :pass, :nombre, :apellidos, :fecha_nacimiento, :email, :tlf, :foto, CURDATE(), :comentarios);
+				');
+			$query -> execute([
+				'login' => $nick, 
+				'pass' => $pass,
+				'nombre' => $nombre,
+				'apellidos' => $apellidos,
+				'fecha_nacimiento' => $fecha_nacimiento,
+				'email' => $correo,
+				'tlf' => $tlf,
+				'foto' => $rutaImagen,
+				'comentarios' => $comentarios
+			]);
+			return $query;
+		}
+
+		function insertarImagen($imagen, $rutaImagen){
+			file_put_contents($rutaImagen, base64_decode($imagen));
+		}
 	}
 	
 ?>

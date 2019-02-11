@@ -104,6 +104,29 @@ class ApiUsuario{
     }
 
     /*
+    Función que crea un usuario en la base de datos e inserta su foto de usuario en el servidor
+    */
+    function agregarUsuario($nick, $pass, $nombre, $apellidos, $fecha_nacimiento, $correo, $tlf, $comentarios, $imagen){
+        $usuario = new Usuario();
+
+        /* Se comprueba que el usuario no existe */
+        $res = $usuario->obtenerUsuario($nick);
+
+        if($res->rowCount() == 0){
+            $rutaImagen = 'imagenes/ ' . $nick . '.jpg';
+            $rutaImagenCompleta = 'http://192.168.1.148/apiFaceCook/' . $rutaImagen;
+
+            $usuario->insertarImagen($imagen, $rutaImagen);
+            $usuario->insertarUsuario($nick, $pass, $nombre, $apellidos, $fecha_nacimiento, $correo, $tlf, $comentarios, $rutaImagenCompleta);
+
+            $this -> mostrarMensaje('El usuario se ha guardado correctamente');
+            
+        }else{
+            $this -> mostrarMensaje('El usuario ya existe en la Base de Datos');
+        }
+    }
+
+    /*
     Función que muestra por pantalla un array que recibe como parámetro codificandolo a JSON
     */
     function printJSON($array){
