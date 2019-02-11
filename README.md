@@ -9,8 +9,8 @@ Api para conectar la App FaceCook con la base de datos externa, que será la que
   `apellidos` varchar(60) NOT NULL,
   `fecha_nacimiento` date NOT NULL,
   `email` varchar(100) NOT NULL,
-  `coordenada_x` double NOT NULL,
-  `coordenada_y` double NOT NULL,
+  `coordenada_x` double,
+  `coordenada_y` double,
   `tlf` int(9) NOT NULL,
   `foto` varchar(100) NOT NULL,
   `fecha_alta` date NOT NULL,
@@ -19,5 +19,5 @@ Api para conectar la App FaceCook con la base de datos externa, que será la que
 
 <h3>Usuarios de ejemplo</h3>
 <pre>INSERT INTO `usuarios` (`login`, `pass`, `nombre`, `apellidos`, `fecha_nacimiento`, `email`, `coordenada_x`, `coordenada_y`, `tlf`, `foto`, `fecha_alta`, `comentarios`) VALUES
-('user1', 'passuser1', 'User1', 'Apellido1 Apellido2', '2000-01-01', 'ejemplo@gmail.com', 62.579437, -65.635722, 523659659, 'foto1.jpg', '2019-02-04', 'Aficionado'),
-('user2', 'passuser2', 'Cocinero', 'Apellidos', '2001-01-01', 'cocinero@gmail.com', 42.579437, 62.579437, 523659659, 'foto2.jpg', '2019-02-05', 'Profesional');</pre>
+('admin', 'admin', 'Alberto', 'Lucena Gómez', '1992-05-22', 'alberto@gmail.com', 37.579437, -4.635722, 523659659, 'http://192.168.1.148/apiFaceCook/imagenes/admin.jpg', '2019-02-04', 'Aficionado'),
+('gatsu', 'gatsu', 'Gatsu', 'The Berserk', '1988-11-05', 'gatsu@gmail.com', 37.679637, -4.635727, 653449235, 'http://192.168.1.148/apiFaceCook/imagenes/gatsu.jpg', '2019-02-11', 'Profesional');</pre>
