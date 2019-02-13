@@ -19,7 +19,6 @@ class ApiUsuario{
     
                 $item=array(
                     "Login" => $row['login'],
-                    "Pass" => $row['pass'],
                     "Nombre" => $row['nombre'],
                     "Apellidos" => $row['apellidos'],
                     "Fecha de nacimiento" => $row['fecha_nacimiento'],
@@ -48,15 +47,14 @@ class ApiUsuario{
         $usuario = new Usuario();
         $listaUsuarios = array();
         
-        $res = $usuario->obtenerUsuario($id);
+        $res = $usuario->obtenerUsuario('$id');
         
-        if($res->rowCount() == 1){
+        if($res->rowCount()){
             
-            $row = $res -> fetch();
-
-            $item=array(
+            while ($row = $res->fetch(PDO::FETCH_ASSOC)){
+    
+                $item=array(
                     "Login" => $row['login'],
-                    "Pass" => $row['pass'],
                     "Nombre" => $row['nombre'],
                     "Apellidos" => $row['apellidos'],
                     "Fecha de nacimiento" => $row['fecha_nacimiento'],
@@ -69,11 +67,12 @@ class ApiUsuario{
                     "Comentarios" => $row['comentarios'],
                 );
                 array_push($listaUsuarios, $item);
+            }
         
             $this -> printJSON($listaUsuarios);
             
         }else{
-            $this -> mostrarMensaje('El usuario no existe en la Base de Datos');
+            $this -> mostrarMensaje('No existen elementos en la Base de Datos');
         }
     }
 
