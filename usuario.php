@@ -24,10 +24,10 @@
 			return $query;
 		}
 
-		function insertarUsuario($nick, $pass, $nombre, $apellidos, $fecha_nacimiento, $correo, $tlf, $comentarios, $rutaImagen){
+		function insertarUsuario($nick, $pass, $nombre, $apellidos, $fecha_nacimiento, $correo, $tlf, $comentarios, $rutaImagen, $latitud, $longitud){
 			$query = $this->connect()->prepare('
-				INSERT INTO usuarios(login, pass, nombre, apellidos, fecha_nacimiento, email, tlf, foto, fecha_alta, comentarios)
-				VALUES (:login, :pass, :nombre, :apellidos, :fecha_nacimiento, :email, :tlf, :foto, CURDATE(), :comentarios);
+				INSERT INTO usuarios(login, pass, nombre, apellidos, fecha_nacimiento, email, tlf, foto, fecha_alta, comentarios, latitud, longitud)
+				VALUES (:login, :pass, :nombre, :apellidos, :fecha_nacimiento, :email, :tlf, :foto, CURDATE(), :comentarios, :latitud, :longitud);
 				');
 			$query -> execute([
 				'login' => $nick, 
@@ -38,7 +38,9 @@
 				'email' => $correo,
 				'tlf' => $tlf,
 				'foto' => $rutaImagen,
-				'comentarios' => $comentarios
+				'comentarios' => $comentarios,
+				'latitud' => $latitud,
+				'longitud' => $longitud
 			]);
 			return $query;
 		}

@@ -23,8 +23,8 @@ class ApiUsuario{
                     "Apellidos" => $row['apellidos'],
                     "Fecha de nacimiento" => $row['fecha_nacimiento'],
                     "Email" => $row['email'],
-                    "Coordenada X" => $row['coordenada_x'],
-                    "Coordenada Y" => $row['coordenada_y'],
+                    "Latitud" => $row['latitud'],
+                    "Longitud" => $row['longitud'],
                     "Telefono" => $row['tlf'],
                     "Foto" => $row['foto'],
                     "Fecha de alta" => $row['fecha_alta'],
@@ -59,8 +59,8 @@ class ApiUsuario{
                     "Apellidos" => $row['apellidos'],
                     "Fecha de nacimiento" => $row['fecha_nacimiento'],
                     "Email" => $row['email'],
-                    "Coordenada X" => $row['coordenada_x'],
-                    "Coordenada Y" => $row['coordenada_y'],
+                    "Latitud" => $row['latitud'],
+                    "Longitud" => $row['longitud'],
                     "Telefono" => $row['tlf'],
                     "Foto" => $row['foto'],
                     "Fecha de alta" => $row['fecha_alta'],
@@ -105,7 +105,7 @@ class ApiUsuario{
     /*
     Función que crea un usuario en la base de datos e inserta su foto de usuario en el servidor
     */
-    function agregarUsuario($nick, $pass, $nombre, $apellidos, $fecha_nacimiento, $correo, $tlf, $comentarios, $imagen){
+    function agregarUsuario($nick, $pass, $nombre, $apellidos, $fecha_nacimiento, $correo, $tlf, $comentarios, $imagen, $latitud, $longitud){
         $usuario = new Usuario();
 
         /* Se comprueba que el usuario no existe */
@@ -116,7 +116,8 @@ class ApiUsuario{
             $rutaImagenCompleta = 'http://192.168.1.148/apiFaceCook/' . $rutaImagen;
 
             $usuario->insertarImagen($imagen, $rutaImagen);
-            $usuario->insertarUsuario($nick, $pass, $nombre, $apellidos, $fecha_nacimiento, $correo, $tlf, $comentarios, $rutaImagenCompleta);
+            $usuario->insertarUsuario($nick, $pass, $nombre, $apellidos, $fecha_nacimiento, $correo, $tlf, $comentarios, $rutaImagenCompleta, 
+                $latitud, $longitud);
 
             $this -> mostrarMensaje('El usuario se ha guardado correctamente');
             

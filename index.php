@@ -5,7 +5,7 @@
 
     if (isset($_POST['nick'])){
     	$api -> agregarUsuario($_POST['nick'], $_POST['pass'], $_POST['nombre'], $_POST['apellidos'], $_POST['fecha_nacimiento'], $_POST['correo'],
-    		$_POST['tlf'], $_POST['comentarios'],$_POST['imagen']);
+    		$_POST['tlf'], $_POST['comentarios'], $_POST['imagen'], $_POST['latitud'], $_POST['longitud']);
 
     }elseif (isset($_POST['login']) && isset($_POST['pass'])) {
     	$api -> loguearUsuario($_POST['login'], $_POST['pass']);
