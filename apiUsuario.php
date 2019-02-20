@@ -127,6 +127,18 @@ class ApiUsuario{
     }
 
     /*
+    Función que envia las coordenadas al servidor
+    */
+    function cambiarCoordenadas($user, $latitud, $longitud){
+        $usuario = new Usuario();
+
+        /* Se actualizan las coordenadas en la base de datos */
+        $res = $usuario->actualizarCoordenadas($user, $latitud, $longitud);
+
+        $this -> mostrarMensaje('Las coordenadas se ha actualizado correctamente');
+    }
+
+    /*
     Función que muestra por pantalla un array que recibe como parámetro codificandolo a JSON
     */
     function printJSON($array){

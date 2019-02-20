@@ -48,6 +48,20 @@
 		function insertarImagen($imagen, $rutaImagen){
 			file_put_contents($rutaImagen, base64_decode($imagen));
 		}
+
+		function actualizarCoordenadas($user, $latitud, $longitud){
+			$query = $this->connect()->prepare('
+				UPDATE usuarios
+				SET latitud = :latitud, longitud = :longitud
+				WHERE login = :login
+				');
+			$query -> execute([
+				'login' => $user, 
+				'latitud' => $latitud,
+				'longitud' => $longitud
+			]);
+			return $query;
+		}
 	}
 	
 ?>
